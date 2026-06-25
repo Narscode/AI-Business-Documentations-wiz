@@ -12,9 +12,11 @@ from .routers import (
     questions,
     users,
 )
+import os
 from .seed import seed_if_empty
 
-app = FastAPI(title="Knowledge Verification Platform", version="0.1.0")
+root_path = os.getenv("ROOT_PATH", "")
+app = FastAPI(title="Knowledge Verification Platform", version="0.1.0", root_path=root_path)
 
 app.add_middleware(
     CORSMiddleware,
