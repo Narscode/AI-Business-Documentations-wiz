@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: ai-business-documentations-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ai-business-documentations-db
+          property: connectionString
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_BASE_URL
+        value: https://api.anthropic.com
+      - key: ENV
+        value: production
+
+databases:
+  - name: ai-business-documentations-db
+    plan: free
