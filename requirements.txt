@@ -1,0 +1,2 @@
+# Top-level pointer to backend deps
+-r backend/requirements.txt
